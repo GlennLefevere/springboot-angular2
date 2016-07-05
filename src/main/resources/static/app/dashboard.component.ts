@@ -8,6 +8,8 @@ import {Messages} from 'primeng/primeng';
 import {TabView} from 'primeng/primeng';
 import {TabPanel} from 'primeng/primeng';
 import {Dialog} from 'primeng/primeng';
+import {OverlayPanel} from 'primeng/primeng';
+import {Button} from 'primeng/primeng';
 
 import { Hero }        from './hero';
 import { HeroService } from './hero.service';
@@ -17,19 +19,16 @@ import { HighlightDirective } from './highlight.directive';
     selector: 'my-dashboard',
     templateUrl: 'app/dashboard.component.html',
     styleUrls: ['app/dashboard.component.css'],
-    directives: [DataTable, Column, TabPanel, TabView, Dialog, HighlightDirective]
+    directives: [DataTable, Column, TabPanel, TabView, Dialog, HighlightDirective, OverlayPanel, Button]
 })
 export class DashboardComponent implements OnInit {
 
     msgs: Message[];
     heroes: Hero[] = [];
-    cols: any[];
     totalRecords: number;
     display: boolean = false;
 
     selectedHero: Hero;
-
-    items: MenuItem[];
 
     constructor(
         private router: Router,
@@ -39,18 +38,7 @@ export class DashboardComponent implements OnInit {
     ngOnInit() {
         this.heroService
             .getHeroes()
-            .then(heroes => { this.heroes = heroes; this.totalRecords = this.heroes.length });
-
-        this.cols = [
-            { field: 'id', header: 'Id', sortable: true },
-            { field: 'name', header: 'Name', sortable: true }
-        ];
-
-        this.items = [
-            { label: 'View', icon: 'fa-search', command: (event) => this.viewCar(this.selectedCar) }
-        ];
-
-        console.log(this.heroes);
+            .then(heroes => { this.heroes = heroes; this.totalRecords = this.heroes.length; this.selectedHero = heroes[0] });
     }
 
     viewHero(hero: Hero) {
@@ -65,5 +53,11 @@ export class DashboardComponent implements OnInit {
 
     showDialog() {
         this.display = true;
+    }
+
+    selectCar(event, hero: Hero, overlaypanel: OverlayPanel) {
+        this.selectedHero = hero;
+        console.log(hero);
+        overlaypanel.toggle(event);
     }
 }

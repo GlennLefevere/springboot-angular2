@@ -1,26 +1,35 @@
-<p-tabView (onChange)="showDialog()"> <p-tabPanel
-	header="Header 1">
-<h3>Top Heroes</h3>
-<div class="grid grid-pad">
-	<div *ngFor="let hero of heroes" (click)="gotoDetail(hero)"
-		class="col-1-4">
-		<div class="module hero">
-			<h4>{{hero.name}}</h4>
+<p-tabView (onChange)="showDialog()"> 
+	<p-tabPanel header="Header 1">
+		<h3>Top Heroes</h3>
+		<div class="grid grid-pad">
+			<div *ngFor="let hero of heroes" (click)="gotoDetail(hero)" class="col-1-4">
+				<div class="module hero">
+					<h4>{{hero.name}}</h4>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-</p-tabPanel> <p-tabPanel header="Header 2"> <p-dataTable
-	#dt [value]="heroes" [rows]="10" [paginator]="true" [pageLinks]="3"
-	[rowsPerPageOptions]="[5,10,20]" [responsive]="true"> <p-column
-	*ngFor="let col of cols" [field]="col.field" [header]="col.header"
-	[sortable]="col.sortable" [filter]="true" filterMatchMode="contains"></p-column>
-</p-dataTable> </p-tabPanel> </p-tabView>
+	</p-tabPanel> 
+	<p-tabPanel header="Header 2"> 
+		<p-dataTable #dt [value]="heroes" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [responsive]="true"> 
+			<p-column field="id" header="Id" [sortable]="true" [filter]="true" filterMatchMode="contains"></p-column>
+		    <p-column field="name" header="Name" [sortable]="true" [filter]="true" filterMatchMode="contains"></p-column>
+		     <p-column [style]="{'width':'10%','text-align':'center'}" header="Logo">
+		        <template let-hero="rowData">
+		            <button type="button" pButton (click)="selectCar($event,hero,op3);" icon="fa-search"></button>
+		        </template>
+		    </p-column>
+		</p-dataTable> 
+		<p-overlayPanel #op3>
+			{{selectedHero?.id}}
+		</p-overlayPanel>
+	</p-tabPanel>
+ </p-tabView>
 
 <p-dialog header="Title" [(visible)]="display">
-<div>
-	<input type="radio" name="colors" (click)="color='lightgreen'" id="green"><label for="green">Green</label>
-	<input type="radio" name="colors" (click)="color='yellow'" id="yellow"><label for="yellow">Yellow</label>
-	<input type="radio" name="colors" (click)="color='cyan'" id="cyan"><label for="cyan">Cyan</label>
-</div>
-<p [myHighlight]="color">Test</p>
+	<div>
+		<input type="radio" name="colors" (click)="color='lightgreen'" id="green"><label for="green">Green</label>
+		<input type="radio" name="colors" (click)="color='yellow'" id="yellow"><label for="yellow">Yellow</label>
+		<input type="radio" name="colors" (click)="color='cyan'" id="cyan"><label for="cyan">Cyan</label>
+	</div>
+	<p [myHighlight]="color">Test</p>
 </p-dialog>
