@@ -4,19 +4,22 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Hero }        from './hero';
 import { HeroService } from './hero.service';
-import {InputText} from 'primeng/primeng';
+import {DataTable} from 'primeng/components/datatable/datatable';
+import {Column} from 'primeng/components/column/column';
 
 @Component({
     selector: 'my-hero-detail',
     templateUrl: 'app/hero-detail.component.html',
-    styleUrls: ['app/hero-detail.component.css']
+    styleUrls: ['app/hero-detail.component.css'],
 })
 export class HeroDetailComponent implements OnInit, OnDestroy {
     @Input() hero: Hero;
     @Output() close = new EventEmitter();
     error: any;
     sub: any;
+    display: boolean = false;
     navigated = false; // true if navigated here
+    color: String = "cyan";
 
     constructor(
         private heroService: HeroService,

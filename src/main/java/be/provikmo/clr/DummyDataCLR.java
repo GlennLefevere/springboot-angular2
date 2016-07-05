@@ -26,7 +26,8 @@ public class DummyDataCLR implements CommandLineRunner {
 	/** {@inheritDoc} */
 	@Override
 	public void run(String... arg0) throws Exception {
-		List<String> names = Arrays.asList("Jos", "Pol", "Max");
+		List<String> names =
+			Arrays.asList("Jos", "Pol", "Max", "Jozef", "Hans", "Piet", "Tom", "Tim", "Jan", "Maarten", "Luc");
 
 		names.forEach(n -> heroService.save(new Hero(n)));
 	}
