@@ -23,7 +23,7 @@
 		<p-overlayPanel #op3>
 			{{selectedHero?.id}}<br/>
 			{{selectedHero?.name}} {{selectedHero?.lastName}}<br/>
-			{{selectedHero?.birthDay  | date:'fullDate'}}
+			{{selectedHero?.birthDay}}
 		</p-overlayPanel>
 		
 		<button type="button" pButton (click)="showDialog()" label="open dialog"></button>

@@ -12,6 +12,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  * @author Glenn Lefevere
  *
@@ -26,6 +28,7 @@ public class Hero {
 
 	private String lastName;
 
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date birthDay;
 
 	@Size(max = 1)
