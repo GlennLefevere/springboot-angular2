@@ -30,6 +30,8 @@ public class Hero {
 
 	public Hero(String name, String lastName, Date birthDay) {
 		this.name = name;
+		this.lastName = lastName;
+		this.birthDay = birthDay;
 	}
 
 	/**

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router }           from '@angular/router';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 
 import {DataTable} from 'primeng/primeng';
 import {Column} from 'primeng/primeng';
@@ -10,6 +11,7 @@ import {TabPanel} from 'primeng/primeng';
 import {Dialog} from 'primeng/primeng';
 import {OverlayPanel} from 'primeng/primeng';
 import {Button} from 'primeng/primeng';
+import {RadioButton} from 'primeng/primeng';
 
 import { Hero }        from './hero';
 import { HeroService } from './hero.service';
@@ -19,16 +21,17 @@ import { HighlightDirective } from './highlight.directive';
     selector: 'my-dashboard',
     templateUrl: 'app/dashboard.component.html',
     styleUrls: ['app/dashboard.component.css'],
-    directives: [DataTable, Column, TabPanel, TabView, Dialog, HighlightDirective, OverlayPanel, Button]
+    directives: [DataTable, Column, TabPanel, TabView, Dialog, HighlightDirective, OverlayPanel, Button, RadioButton, ROUTER_DIRECTIVES]
 })
 export class DashboardComponent implements OnInit {
 
     msgs: Message[];
     heroes: Hero[] = [];
     totalRecords: number;
-    display: boolean = false;
+    //display: boolean = false;
 
     selectedHero: Hero;
+    val2: string = 'Option 2';
 
     constructor(
         private router: Router,
@@ -57,7 +60,6 @@ export class DashboardComponent implements OnInit {
 
     selectCar(event, hero: Hero, overlaypanel: OverlayPanel) {
         this.selectedHero = hero;
-        console.log(hero);
         overlaypanel.toggle(event);
     }
 }
