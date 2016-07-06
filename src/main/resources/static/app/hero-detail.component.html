@@ -1,12 +1,56 @@
 <div *ngIf="hero">
-	<h2>{{hero.name}} details!</h2>
-	<div>
-		<label>id: </label>{{hero.id}}
+	<h2>{{hero.name}} {{hero.lastName}} details!</h2>
+	
+	<div class="ui-g">
+		<div class="ui-g-1">
+			<label>id: </label>
+		</div>
+		<div class="ui-g-4">
+			{{hero.id}}
+		</div>
 	</div>
-	<div>
-		<label>name: </label> <input [(ngModel)]="hero.name"
-			placeholder="name" />
+	<div class="ui-g">
+		<div class="ui-g-1">
+			<label for="name">name: </label>
+		</div>
+		<div class="ui-g-4">
+		 <input id="name" [(ngModel)]="hero.name" placeholder="name" type="text" pInputText [disabled]="disabled"/>
+		</div>
 	</div>
+	<div class="ui-g">
+		<div class="ui-g-1">
+			<label for="lastname">lastname: </label>
+		</div>
+		<div class="ui-g-4">
+			<input id="lastname" [(ngModel)]="hero.lastName" placeholder="name" type="text" pInputText/>
+		</div>
+	</div>
+	<div class="ui-g">
+		<div class="ui-g-1">
+			<label for="birthDay">birthday: </label>
+		</div>
+		<div class="ui-g-4">
+			<input [(ngModel)]="hero.birthDay" type="date" id="birthDay" />
+		</div>
+	</div>
+	<div class="ui-grid ui-grid-responsive ui-grid-pad" style="width:250px;margin-bottom:10px">
+    	<div class="ui-grid-row">
+	        <div class="ui-grid-col-3">
+	        	<label class="ui-widget">Man</label>
+	        </div>
+        	<div class="ui-grid-col-1">
+        		<p-radioButton name="group1" value="M" [(ngModel)]="hero.gender"></p-radioButton>
+        	</div>
+    	</div>
+    	<div class="ui-grid-row">
+	        <div class="ui-grid-col-3">
+	        	<label class="ui-widget">Vrouw</label>
+	        </div>
+        	<div class="ui-grid-col-1">
+        		<p-radioButton name="group1" value="V" [(ngModel)]="hero.gender"></p-radioButton>
+        	</div>
+    	</div>
+    </div>
 	<button (click)="goBack()">Back</button>
 	<button (click)="save()">Save</button>
 </div>

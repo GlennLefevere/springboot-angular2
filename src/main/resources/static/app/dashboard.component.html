@@ -1,5 +1,4 @@
 <p-tabView> 
-<!-- 	 (onChange)="showDialog()" -->
 	<p-tabPanel header="Header 1">
 		<h3>Top Heroes</h3>
 		<div class="grid grid-pad">
@@ -20,29 +19,33 @@
 			<p-column field="id" header="Id" [sortable]="true" [filter]="true" filterMatchMode="contains"></p-column>
 		    <p-column field="name" header="Name" [sortable]="true" [filter]="true" filterMatchMode="contains"></p-column>
 		</p-dataTable> 
+		
 		<p-overlayPanel #op3>
 			{{selectedHero?.id}}<br/>
 			{{selectedHero?.name}} {{selectedHero?.lastName}}<br/>
 			{{selectedHero?.birthDay  | date:'fullDate'}}
 		</p-overlayPanel>
+		
+		<button type="button" pButton (click)="showDialog()" label="open dialog"></button>
+		
 	</p-tabPanel>
  </p-tabView>
 
-<!-- <p-dialog header="Title" [(visible)]="display"> -->
-<!-- 	<div class="ui-grid ui-grid-responsive ui-grid-pad" style="width:250px;margin-bottom:10px"> -->
-<!-- 	    <div class="ui-grid-row"> -->
-<!-- 	        <div class="ui-grid-col-1"><p-radioButton name="group1" value="Option 1" group1></p-radioButton></div> -->
-<!-- 	        <div class="ui-grid-col-11"><label class="ui-widget">Option 1</label></div> -->
-<!-- 	    </div> -->
-<!-- 	    <div class="ui-grid-row"> -->
-<!-- 	        <div class="ui-grid-col-1"><p-radioButton name="group1" value="Option 2"></p-radioButton></div> -->
-<!-- 	        <div class="ui-grid-col-11"><label class="ui-widget">Option 2</label></div> -->
-<!-- 	    </div> -->
-<!-- 	    <div class="ui-grid-row"> -->
-<!-- 	        <div class="ui-grid-col-1"><p-radioButton name="group1" value="Option 3"></p-radioButton></div> -->
-<!-- 	        <div class="ui-grid-col-11"><label class="ui-widget">Option 3</label></div> -->
-<!-- 	    </div> -->
-<!-- 	</div> -->
+<p-dialog header="Title" [(visible)]="display">
+	<div class="ui-grid ui-grid-responsive ui-grid-pad" style="width:250px;margin-bottom:10px">
+	    <div class="ui-grid-row">
+	        <div class="ui-grid-col-1"><p-radioButton name="group1" value="lightgreen" [(ngModel)]="val2" (click)="color='lightgreen'"></p-radioButton></div>
+	        <div class="ui-grid-col-11"><label class="ui-widget">Lightgreen</label></div>
+	    </div>
+	    <div class="ui-grid-row">
+	        <div class="ui-grid-col-1"><p-radioButton name="group1" value="yellow" [(ngModel)]="val2" (click)="color='yellow'"></p-radioButton></div>
+	        <div class="ui-grid-col-11"><label class="ui-widget">Yellow</label></div>
+	    </div>
+	    <div class="ui-grid-row">
+	        <div class="ui-grid-col-1"><p-radioButton name="group1" value="cyan" [(ngModel)]="val2" (click)="color='cyan'"></p-radioButton></div>
+	        <div class="ui-grid-col-11"><label class="ui-widget">Cyan</label></div>
+	    </div>
+	</div>
 	
-<!-- 	<p [myHighlight]="color">Test</p> -->
-<!-- </p-dialog> -->
+	<p [myHighlight]="color">Test</p>
+</p-dialog>

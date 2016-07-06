@@ -3,4 +3,5 @@ export class Hero {
     name: string;
     lastName: string;
     birthDay: Date;
+    gender: string;
 }

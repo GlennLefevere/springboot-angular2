@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router }           from '@angular/router';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 
@@ -28,10 +28,10 @@ export class DashboardComponent implements OnInit {
     msgs: Message[];
     heroes: Hero[] = [];
     totalRecords: number;
-    //display: boolean = false;
+    display: boolean = false;
 
     selectedHero: Hero;
-    val2: string = 'Option 2';
+    @Input() val2: string = 'lightgreen';
 
     constructor(
         private router: Router,

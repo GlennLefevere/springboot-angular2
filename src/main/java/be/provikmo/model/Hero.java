@@ -8,6 +8,9 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * @author Glenn Lefevere
@@ -24,6 +27,10 @@ public class Hero {
 	private String lastName;
 
 	private Date birthDay;
+
+	@Size(max = 1)
+	@NotEmpty
+	private String gender = "M";
 
 	public Hero() {
 	}
@@ -92,6 +99,21 @@ public class Hero {
 	 */
 	public void setBirthDay(Date birthDay) {
 		this.birthDay = birthDay;
+	}
+
+	/**
+	 * @return the gender
+	 */
+	public String getGender() {
+		return gender;
+	}
+
+	/**
+	 * @param gender
+	 *            the gender to set
+	 */
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 }

@@ -4,22 +4,24 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Hero }        from './hero';
 import { HeroService } from './hero.service';
-import {DataTable} from 'primeng/components/datatable/datatable';
-import {Column} from 'primeng/components/column/column';
+
+import {InputText} from 'primeng/primeng';
+import {Calendar} from 'primeng/primeng';
+import {RadioButton} from 'primeng/primeng';
 
 @Component({
     selector: 'my-hero-detail',
     templateUrl: 'app/hero-detail.component.html',
     styleUrls: ['app/hero-detail.component.css'],
+    directives: [InputText, Calendar, RadioButton]
 })
 export class HeroDetailComponent implements OnInit, OnDestroy {
     @Input() hero: Hero;
     @Output() close = new EventEmitter();
     error: any;
     sub: any;
-    display: boolean = false;
     navigated = false; // true if navigated here
-    color: String = "cyan";
+    disabled: boolean = false;
 
     constructor(
         private heroService: HeroService,
